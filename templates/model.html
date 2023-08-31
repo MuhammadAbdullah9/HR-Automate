@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home page</title>
+	
+		<style>
+.page th {
+  
+    background-color: #add8e6;
+    color: white;
+}
+
+</style>
+</head>
+<body>
+	<h1>Upload your resume</h1>
+
+	<form method="POST" action="/submit" enctype="multipart/form-data">
+	
+	<input type="file" name="userfile">
+	<input type="submit">
+	</form>
+
+
+	<div> 
+		{% if eligible is defined and eligible %}
+			<h2> Your score is matched : You are eligible </h2>
+		{% elif eligible is defined and not eligible %}
+			<h2>we are sorry, you scored low : Please refer to our other applications</h2>
+		{% elif eligible is not defined %}
+			<h2>plese upload your resume</h2>
+		
+		{% endif %}
+	</div>
+
+	<div class=page>
+
+		{% if eligible is defined and eligible %}
+ 			<h1>These could be the jobs you may like to consider</h1>
+  			{% for table in tables %}
+    	
+    		{{ table|safe }}
+  			{% endfor %}
+
+		{% else %}
+			<h3>There is always something you can do the best</h3>
+
+		{% endif %}
+
+	</div>
+</body>
+
+</html>
