@@ -98,7 +98,7 @@ def submit_data():
         
         
     #return  'nothing' 
-    return render_template('model.html',tables=[df2.to_html(classes='job')], eligible=eligible, titles=['na','Job'])
+    return render_template('index.html',tables=[df2.to_html(classes='job')], eligible=eligible, titles=['na','Job'])
         
         
         
